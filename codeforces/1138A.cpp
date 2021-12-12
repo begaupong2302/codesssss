@@ -11,7 +11,7 @@ int main()
     A[n+1] = 1;
     A[n+2] = 2;
     int d = 0;
-    int x = 1;
+    int x = 0;
     int r;
     int Max = 0;
     for (int i = 0; i <= n+1; i++){
@@ -22,8 +22,11 @@ int main()
                 if (i == n+1){
                     r = i - x;
                     Max = max(x, r);
-                }else{
-                    r = i - x + 1
+                }else if (x = 0){
+                    r = i - x;
+                    Max = max(x, r);
+                }else {
+                    r = i - x + 1;
                     Max = max(x, r);
                 }
                 
@@ -34,3 +37,4 @@ int main()
     cout<< Max;
     return 0;
 }
+
