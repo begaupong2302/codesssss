@@ -16,7 +16,9 @@ int main()
 {
     int n = 7;
     int x = 0;
-    int r = tbfcs(n, x);
+    while(true){
+        
+    }
     cout<<r;
     return 0;
 }
