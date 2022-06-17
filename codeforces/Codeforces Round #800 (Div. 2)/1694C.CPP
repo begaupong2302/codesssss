@@ -11,6 +11,7 @@ int main(){
         for (long long i = 0; i<n; i++){
             cin>>A[i];
         }
+
         if (n == 1 && A[0] == 0){
             cout<<"Yes"<<endl;
             continue;
@@ -19,43 +20,23 @@ int main(){
             cout<<"No"<<endl;
             continue;
         }
-        long long sum1 = 0;
-        long long sum2 = 0;
-        long long sum3 = 0;
-        int i = n;
-        while (i--){
-            if (i == 0){
-                if ((sum3 + A[0]) == 0){
-                    cout<<"Yes"<<endl;
-                }else{
-                    cout<<"No"<<endl;
-                }
-            }
-            if (s == 1 && A[i] < 0){
+        if (A[0] < 0 || A[n - 1] > 0) {
+            cout << "No\n";
+            continue;
+        }
+        long long B[n];
+        B[0] = A[0];
+        for (long long i = 1; i<n; i++){
+            B[i] = A[i] + B[i-1];
+            if (B[i] < 0 || (B[i] > 0 && B[i-1] == 0)){
                 s = 0;
-                sum2 = A[i];
+                break;
             }
-            if (s == 0){
-                if (A[i] < 0){
-                    if ((sum1 + sum2) != -1){
-                        cout<<"No"<<endl;
-                        break;
-                    }
-                    sum3=sum3 + sum1 + sum2;
-                    sum2 = A[i];
-                    sum1 = 0;
-                }
-                if (A[i] >= 0){
-                    sum1+= A[i];
-                }
-            }
-            if (i == 1){
-                if ((sum1 + sum2) != -1){
-                        cout<<"No"<<endl;
-                        break;
-                }
-                sum3=sum3 + sum1 + sum2;
-            }
+        }
+        if (s != 0 && B[n-1] == 0){
+            cout<<"Yes"<<endl;
+        }else{
+            cout<<"No"<<endl;
         }
     }
 }
