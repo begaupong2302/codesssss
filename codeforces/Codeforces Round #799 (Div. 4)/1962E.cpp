@@ -13,36 +13,22 @@ int main(){
             cin>>A[i];
             sum+= A[i];
         }
-        int x;
-        if (a%2 == 0){
-            x = a/2;
-            for (int i = 0; i<=x; i++){
-                if (sum == b){
-                    cout<<i<<endl;
+        int x =0;
+        bool y = false;
+        while(true){
+            if (sum == b) y = true;
+            if (y){
+                if (sum < b){
+                    cout<<x<<endl;
                     break;
                 }
-                if (i == x){
-                    if (sum != b){
-                        cout<<"-1"<<endl;
-                    }
-                }
-                sum = sum - A[i] - A[a-1-i];
             }
-        }else{
-            x = (a-1)/2;
-            for (int i = 0; i<=x; i++){
-                if (sum == b){
-                    cout<<i<<endl;
-                    break;
-                }
-                if (i == x){
-                    if (sum != b){
-                        cout<<"-1"<<endl;
-                    }
-                }
-                sum = sum - A[i] - A[a-1-i];
+            if (sum < b){
+                cout<<"-1"<<endl;
+                break;
             }
+            sum = sum - A[x] - A[a-x-1];
+            x++;
         }
-
     }
 }
