@@ -5,30 +5,47 @@ using namespace std;
 int main(){
     int t; cin>>t;
     while(t--){
-        long long a,b;
-        cin>>a>>b;
-        long long A[a];
-        int sum = 0;
-        for (int i = 0; i<a; i++){
+        long long n,s;
+        cin>>n>>s;
+        long long A[n];
+        long long sum = 0;
+        for (long long i = 0; i<n; i++){
             cin>>A[i];
             sum+= A[i];
         }
-        int x =0;
-        bool y = false;
-        while(true){
-            if (sum == b) y = true;
-            if (y){
-                if (sum < b){
-                    cout<<x<<endl;
+        vector<long long> V;
+        if (sum < s){
+            cout<<-1<<endl;
+            continue;
+        }
+        if (sum == s){
+            cout<<0<<endl;
+            continue;
+        }
+        long long sum2 = 0;
+        long long count = 0;
+        for (long long i = 0; i<n; i++){
+            sum2+= A[i];
+            if (i == n-1){
+                if (sum2 == s){
+                    count++;
+                    V.push_back(count);
                     break;
                 }
             }
-            if (sum < b){
-                cout<<"-1"<<endl;
-                break;
+            if (sum2 > s){
+                V.push_back(count);
+                sum2-= 1;
+            }else{
+                count++;
             }
-            sum = sum - A[x] - A[a-x-1];
-            x++;
         }
+        long long max1 = INT_MIN;
+        for (long long i = 0; i< V.size(); i++){
+            cout<<V[i]<<" ";
+            max1 = max(max1, V[i]);
+        }
+        cout<<endl;
+        cout<<n-max1<<endl;
     }
 }
