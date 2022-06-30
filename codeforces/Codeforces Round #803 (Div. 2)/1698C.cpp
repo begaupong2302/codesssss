@@ -35,7 +35,6 @@ int main(){
                 c++;
             }
         }
-        int z = 0;
         if (count == 2){
             if (sum == 0 || sum == B[0] || sum == B[1]){
                 cout<<"YES"<<endl;
