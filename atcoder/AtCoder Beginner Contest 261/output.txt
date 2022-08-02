@@ -1,0 +1,5 @@
+newfile
+newfile(1)
+newfolder
+newfile(1)(1)
+newfolder(1)
